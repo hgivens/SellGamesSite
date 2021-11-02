@@ -17,7 +17,10 @@
 <body>
     <?php
     include "./View/menu.php";
-    echo($_SESSION['userName']);
+    echo("Welcome Back ".$_SESSION['userName']);
+    
+
     ?>
+    <a href="editGames.php"> edit</a>
 </body>
 </html>

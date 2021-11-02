@@ -6,6 +6,7 @@
  $db = mysqli_connect($host, $username, $password, $db_name) or die(include "error.php");
 
 
+//The PullGame function talks to the database to pull up all the games on the database to display them
 function pullGames(){
     global $db;
     $mySql = "SELECT GM_TITLE,GM_IMG, GM_PRICE FROM videogame";
@@ -16,6 +17,7 @@ function pullGames(){
     return $allGameInfo;
 }
 
+//gameAlone function should pull all data from one game once clicking on read more using the Game ID to pull form the database
 function gameAlone($game_id){
     global $db;
     $mySql = "SELECT * FROM videogame WHERE GM_ID = '{$game_id}'";
@@ -26,12 +28,26 @@ function gameAlone($game_id){
     return $gameInfo;
 }
 
-function addUser($fname, $lname, $phone, $street, $city, $state, $zip){
+//addUser should be taking the users from infromation and entering it into the "insert" statment for the database, inreturn making a new customer account
+function addUser($cstID,$fname, $lname, $phone, $street, $city, $state, $zip){
     global $db;
-    $mySql = "INSERT INTO `customers`( `CUST_F_NAME`, `CUST_L_NAME`, `CUST_PHONE`, `CUST_ST`, `CUST_CITY`, `CUST_STATE`, `CUST_ZIP`) VALUES ( {$fname}, {$lname}, {$phone}, {$street}, {$city}, {$state}, {$zip})";
+    $mySql = "INSERT INTO `customers`( `CUST_ID`,`CUST_F_NAME`, `CUST_L_NAME`, `CUST_PHONE`, `CUST_ST`, `CUST_CITY`, `CUST_STATE`, `CUST_ZIP`) VALUES ( {$cstID},{$fname}, {$lname}, {$phone}, {$street}, {$city}, {$state}, {$zip})";
     echo($mySql);
     $myQuery = mysqli_query($db,$mySql);
+    echo"$myQuery";
     
+}
+
+//uploadGame lets the admin set a new game on the website through the form in simular fation of the added for the accounts
+function uploadGame($gTitle,$gImg,$gGener,$gRating,$gCo,$gPlayer,$gStation,$gYear,$gPrice){
+    global $db;
+    $mySql = "INSERT INTO `videogame`(`GM_TITLE`, `GM_IMG`, `GM_GENER`, `GM_RATING`, `GM_CO`, `GM_PLAYER`, `GM_STATION`, `GM_YEAR`, `GM_PRICE`) VALUES ('{$gTitle}','{$gImg}','{$gGener}','{$gRating}','{$gCo}','{$gPlayer}','{$gStation}','{$gYear}','{$gPrice}')";
+}
+
+//update game should update the exsiting game by pulling it up from the data base and change it. 
+function updateGame($gTitle,$gImg,$gGener,$gRating,$gCo,$gPlayer,$gStation,$gYear,$gPrice){
+    global $db;
+    $mySql = "UPDATE `videogame` SET `GM_TITLE`='{$gTitle}',`GM_IMG`='{$gImg}',`GM_GENER`='{$gGener}',`GM_RATING`='{$gRating}',`GM_CO`='{$gCo}',`GM_PLAYER`='{$gPlayer}',`GM_STATION`='{$gStation}',`GM_YEAR`='{$gYear}',`GM_PRICE`='{$gPrice}' WHERE 1";
 }
 
 ?>

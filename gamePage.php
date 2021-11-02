@@ -17,14 +17,14 @@
     
     <?php 
         $Games = pullGames();
-        foreach($Games as $singleGameArry){
+        foreach($Games as $GameArry){
             echo("
             <div class='frt_game_display'>
-                <h1>{$singleGameArry[0]}</h1>
-                <img src='{$singleGameArry[1]}' alt='Game Poster'>
-                <h1>Price: {$singleGameArry[2]}</h1> 
+                <h1>{$GameArry[0]}</h1>
+                <img src='{$GameArry[1]}' alt='Game Poster'>
+                <h1>Price: {$GameArry[2]}</h1> 
 
-                <a method='get' href='./?action=clickedGame'>See More</a>
+                <a method='get' href='?action=clickedGame'>See More</a>
             </div>
             ");
         }
@@ -32,8 +32,13 @@
         switch ($action){
             //this will display the dingle game once clicked 
             case "clickedGame":
-                $singleGameArry = gameAlone($game_id);
-                include "View/dispalyGames.php";
+
+               
+                
+                $singleGameArry = gameAlone(1);
+                 echo"$singleGameArry";
+                //$singleGameArry = 1;
+                include "./View/displayGames.php";
                 break;
             case "default":
                 break;

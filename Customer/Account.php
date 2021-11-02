@@ -1,5 +1,15 @@
 
 <?php 
+/*
+~~ Customer Create Accout Page~~
+Author: Hannah Givens
+Date: 11*1*2021
+
+~~NOTES~~
+
+this page makes a session for the customer for when they make an account they can then go shoping
+It uses cookies to keep the users IDs so they are able to travel the site without losing there data.
+*/
     session_start();
     //session start has to be the very first thing to be writen on a code
     $_SESSION['username']="Sammy";
@@ -24,8 +34,8 @@
         $_SESSION['userName']=$userName;
         header("Location: homepage.php");
     }
-   // include "../Modle/dataFunction.php";
-        $action = filter_input(INPUT_GET, 'action');       
+   include "../Modle/dataFunction.php";
+        $action = filter_input(INPUT_POST, 'action');       
         if ($action==NULL) $action = filter_input(INPUT_POST,'action');
 ?>
 <!DOCTYPE html>
@@ -41,6 +51,7 @@
 <body>
     
     <?php 
+        $actID = 3;
         $fname = filter_input(INPUT_POST, 'nputEmail4') ;
         $lname  = filter_input(INPUT_POST,'inputPassword4') ;
         $phone = filter_input(INPUT_POST,'inputPhone');
@@ -58,11 +69,14 @@
         // $state = "MO" ;
         // $zip ="78985" ;
 
-        $added = addUser($fname, $lname, $phone, $street, $city, $state, $zip);
+        include "./View/createForm.php";
+
+        $added = addUser($actID,$fname, $lname, $phone, $street, $city, $state, $zip);
 
         switch ($action){
             case "addedCust":
               echo"added";
+              $actID + 1;
                 $added;
                 break;
             case "default":
