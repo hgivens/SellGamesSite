@@ -21,6 +21,8 @@
     
 
     ?>
-    <a href="editGames.php"> edit</a>
+    <li><a href="editGames.php"> edit</a></li>
+    <li><a href="newGameAdd.php"> ADD</a></li>
+    
 </body>
 </html>

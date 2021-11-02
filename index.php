@@ -19,7 +19,7 @@
 <body>
     <?php
     include "./View/menu.php";
-    $game_id = 1;
+    $game_id = 2;
         gameAlone($game_id);
     ?>
     <div class="container">

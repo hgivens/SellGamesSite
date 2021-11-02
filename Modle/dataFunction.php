@@ -9,12 +9,21 @@
 //The PullGame function talks to the database to pull up all the games on the database to display them
 function pullGames(){
     global $db;
-    $mySql = "SELECT GM_TITLE,GM_IMG, GM_PRICE FROM videogame";
+    $mySql = "SELECT GM_TITLE,GM_IMG, GM_PRICE, GM_ID FROM videogame";
     //echo($mySql);
     $myQuery = mysqli_query($db,$mySql);
     $allGameInfo = mysqli_fetch_all($myQuery);
     //print_r($allGameInfo);
     return $allGameInfo;
+}
+//this function is to pull the id when clicking on read more
+function grabID(){
+    global $db;
+    $mySql = "SELECT GM_ID FROM videogame";
+    $myQuery = mysqli_query($db,$mySql);
+    $idInfo = mysqli_fetch_all($myQuery);
+    return $idInfo;
+
 }
 
 //gameAlone function should pull all data from one game once clicking on read more using the Game ID to pull form the database
@@ -24,7 +33,7 @@ function gameAlone($game_id){
     //echo($mySql);
     $myQuery = mysqli_query($db,$mySql);
     $gameInfo = mysqli_fetch_all($myQuery);
-    //print_r($gameInfo);
+    print_r($gameInfo);
     return $gameInfo;
 }
 

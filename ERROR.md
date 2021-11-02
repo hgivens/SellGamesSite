@@ -1,6 +1,10 @@
 # THING THAT NEED WORKED ON #
-- CSS page isnt getting uploaded properly, it jsut shows up empty in the inspect scorces
-    - for some reason it works now.. be weary ?
-- the games "see more" dose not pull up the games infrmation like it should
-- new User dose not insert into the data base 
-- the account page need to have a redirect to confirm that they got in. 
+
+- the games "see more" will work if its hard coded but unsure how to attach the game id to the a tag to pass it to my function
+
+- new User dose not insert into the data base?????????
+
+- the account page need to have a redirect to confirm that they got in.
+
+- Admin pages need to be finished
+    - write to the data base with both update and upload. the functions exsist just have to implamint them
