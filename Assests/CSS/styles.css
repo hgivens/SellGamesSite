@@ -1,0 +1,11 @@
+body{
+    margin: 5%;
+    padding: 10%;
+    background-color: burlywood;
+}
+h1{
+    color: crimson;
+}
+.single_game_display{
+    padding: 20px;
+}
