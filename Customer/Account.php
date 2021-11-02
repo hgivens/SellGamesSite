@@ -9,7 +9,7 @@
         session_unset();
         session_destroy();
     }
-    //include "View/db.php";
+    include "View/db.php";
     $userName = filter_input(INPUT_POST, 'inputEmail4');
     echo $userName;
     if($userName){
@@ -24,7 +24,7 @@
         $_SESSION['userName']=$userName;
         header("Location: homepage.php");
     }
-    include "../Modle/dataFunction.php";
+   // include "../Modle/dataFunction.php";
         $action = filter_input(INPUT_GET, 'action');       
         if ($action==NULL) $action = filter_input(INPUT_POST,'action');
 ?>
@@ -40,7 +40,6 @@
 </head>
 <body>
     
-    <h1>Creat A New Account</h1>
     <?php 
         $fname = filter_input(INPUT_POST, 'nputEmail4') ;
         $lname  = filter_input(INPUT_POST,'inputPassword4') ;
@@ -59,13 +58,15 @@
         // $state = "MO" ;
         // $zip ="78985" ;
 
-        $added =addUser($fname, $lname, $phone, $street, $city, $state, $zip);
+        $added = addUser($fname, $lname, $phone, $street, $city, $state, $zip);
 
         switch ($action){
             case "addedCust":
+              echo"added";
                 $added;
                 break;
             case "default":
+              include "./View/createForm.php";
                 break;
                 
         }
@@ -73,41 +74,6 @@
        // echo($_SESSION['username']);
 
     ?>
-    <form action="./" method="post" class="row g-3">
-    <div class="col-md-6">
-    <label for="inputEmail4" class="form-label">First Name</label>
-    <input type="text" class="form-control" id="inputEmail4">
-  </div>
-  <div class="col-md-6">
-    <label for="inputPassword4" class="form-label">LastName</label>
-    <input type="text" class="form-control" id="inputPassword4">
-  </div>
-  <div class="col-md-6">
-    <label for="inputPassword4" class="form-label">Phone</label>
-    <input type="text" class="form-control" id="inputPhone">
-  </div>
-  <div class="col-12">
-    <label for="inputAddress" class="form-label">Address</label>
-    <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
-  </div>
-  <div class="col-md-6">
-    <label for="inputCity" class="form-label">City</label>
-    <input type="text" class="form-control" id="inputCity">
-  </div>
-  <div class="col-md-4">
-    <label for="inputState" class="form-label">State</label>
-    <input type="text" id="inputState" class="form-control">
-  </div>
-  <div class="col-md-2">
-    <label for="inputZip" class="form-label">Zip</label>
-    <input type="text" class="form-control" id="inputZip">
-  </div>
-  <input type="text" name="action" value="addedCust">
-  <div class="col-12">
-    <button type="submit" class="btn btn-primary">Creat Account</button>
-  </div>
-
-    </form>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
 </body>
